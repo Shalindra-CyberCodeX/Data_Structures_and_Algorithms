@@ -30,7 +30,7 @@ void traverseInOrder(struct node *root) {
 
 // Insert a node
 struct node *insertNode(struct node *root, int key) {
-  if(root == NULL) { // empty tree
+  if(root == NULL) { //Checking if the tree is empty 
 		root = GetNewNode(key);
 	}
 	// if key to be inserted is lesser, insert in left subtree. 
@@ -49,25 +49,26 @@ struct node *deleteNode(struct node *root, int key) {
  if(root == NULL) return root; 
 	else if(key < root->key) root->left = deleteNode(root->left,key);
 	else if (key > root->key) root->right = deleteNode(root->right,key);
-	// Wohoo... I found you, Get ready to be deleted	
+	
 	else {
-		// Case 1:  No child
+		// Case 1:  When no child for node simply we can delete it
 		if(root->left == NULL && root->right == NULL) { 
 			delete root;
 			root = NULL;
 		}
-		//Case 2: One child 
+		//Case 2: One child
 		else if(root->left == NULL) {
 			struct node *temp = root;
 			root = root->right;
 			delete temp;
 		}
+        
 		else if(root->right == NULL) {
 			struct node *temp = root;
 			root = root->left;
 			delete temp;
 		}
-		// case 3: 2 children
+		// case 3: 2 children 
 		else { 
 			struct node *temp = FindMin(root->right);
 			root->key = temp->key;
