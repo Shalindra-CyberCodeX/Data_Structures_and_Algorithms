@@ -2,8 +2,6 @@
 #include <list>
 using namespace std;
 
-//list is STL which use a underline linked list data structure
-
 struct Node {
     // A node will 2 entities
     //1. data type int called label
