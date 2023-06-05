@@ -5,9 +5,7 @@ using namespace std;
 // Number of vertices in the graph
 #define V 6
 
-// A utility function to find the vertex with
-// minimum key value, from the set of vertices
-// not yet included in MST
+//finding the minimum key
 int minKey(int key[], bool mstSet[])
 {
 	// Initialize min value
@@ -53,9 +51,7 @@ void primMST(int graph[V][V])
 	for (int i = 0; i < V; i++)
 		key[i] = INT_MAX, mstSet[i] = false;
 
-	// Always include first 1st vertex in MST.
-	// Make key 0 so that this vertex is picked as first
-	// vertex.
+	
 	key[0] = 0;
 
 	// First node is always root of MST
@@ -71,16 +67,10 @@ void primMST(int graph[V][V])
 		// Add the picked vertex to the MST Set
 		mstSet[u] = true;
 
-		// Update key value and MSTarr index of
-		// the adjacent vertices of the picked vertex.
-		// Consider only those vertices which are not
-		// yet included in MST
+		
 		for (int v = 0; v < V; v++)
 
-			// graph[u][v] is non zero only for adjacent
-			// vertices of m mstSet[v] is false for vertices
-			// not yet included in MST Update the key only
-			// if graph[u][v] is smaller than key[v]
+			
 			if (graph[u][v] && mstSet[v] == false
 				&& graph[u][v] < key[v])
 				MSTarr[v] = u, key[v] = graph[u][v];
